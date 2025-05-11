@@ -34,4 +34,12 @@ public class WarehouseService : IWarehouseService
         var id = await _warehouseRepository.CreatePurchaseAsync(request, cancellationToken);
         return id;
     }
+
+    public async Task<int?> CreatePurchaseByProcAsync(PurchaseRequestDto request, CancellationToken cancellationToken)
+    {
+        var id = await _warehouseRepository.CreatePurchaseByProcAsync(request, cancellationToken);
+        return id;
+
+    }
+
 }

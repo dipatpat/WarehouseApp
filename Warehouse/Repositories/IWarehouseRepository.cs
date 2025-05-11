@@ -6,5 +6,6 @@ public interface IWarehouseRepository
 {
     public Task<Models.Warehouse?> GetWarehouseByIdAsync(int id, CancellationToken cancellationToken);
     public Task<int?> CreatePurchaseAsync(PurchaseRequestDto request, CancellationToken cancellationToken);
+    public Task<int?> CreatePurchaseByProcAsync(PurchaseRequestDto request, CancellationToken cancellationToken);
 
 }

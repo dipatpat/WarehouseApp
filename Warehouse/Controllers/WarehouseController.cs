@@ -29,4 +29,11 @@ public class WarehouseController : ControllerBase
         return StatusCode(201, new { IdProductWarehouse = transactionId });
     }
     
+    [HttpPost("proc")]
+    public async Task<IActionResult> CreatePurchaseByProcAsync(PurchaseRequestDto request, CancellationToken cancellationToken)
+    {
+        var transactionId = await _warehouseService.CreatePurchaseByProcAsync(request, cancellationToken);
+        return StatusCode(201, new { IdProductWarehouse = transactionId });
+    }
+    
 }

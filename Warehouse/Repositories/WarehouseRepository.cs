@@ -1,3 +1,4 @@
+using System.Data;
 using Microsoft.Data.SqlClient;
 using Warehouse.DTOs;
 using Warehouse.Exceptions;
@@ -119,5 +120,32 @@ public class WarehouseRepository : IWarehouseRepository
     }
 }
 
+    public async Task<int?> CreatePurchaseByProcAsync(PurchaseRequestDto request, CancellationToken cancellationToken)
+    {
+        await using var connection = new SqlConnection(_connectionString);
+        await connection.OpenAsync(cancellationToken);
 
+        await using var command = new SqlCommand("AddProductToWarehouse", connection)
+        {
+            CommandType = CommandType.StoredProcedure
+        };
+
+        command.Parameters.AddWithValue("@IdProduct", request.IdProduct);
+        command.Parameters.AddWithValue("@IdWarehouse", request.IdWarehouse);
+        command.Parameters.AddWithValue("@Amount", request.Amount);
+        command.Parameters.AddWithValue("@CreatedAt", request.CreatedAt);
+
+        try
+        {
+            var result = await command.ExecuteScalarAsync(cancellationToken);
+            return Convert.ToInt32(result);
+        }
+        catch (SqlException ex)
+        {
+            throw new BadRequestException(ex.Message); 
+        }
+    }
 }
+
+
+
