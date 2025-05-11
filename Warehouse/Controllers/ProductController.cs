@@ -4,6 +4,8 @@ using Warehouse.Services;
 
 namespace Warehouse.Controllers;
 
+[Route("api/[controller]")]
+[ApiController]
 public class ProductController : Controller
 {
     private readonly IProductService _productService;   

@@ -16,8 +16,8 @@ public class Program
         builder.Services.AddControllers();
         builder.Services.AddScoped<IProductService, ProductService>(); //register dependency
         builder.Services.AddScoped<IProductRepository, ProductRepository>();
-        //builder.Services.AddScoped<IClientService, ClientService>();
-        //builder.Services.AddScoped<IClientRepository, ClientRepository>();
+        builder.Services.AddScoped<IWarehouseService, WarehouseService>();
+        builder.Services.AddScoped<IWarehouseRepository, WarehouseRepository>();
         //builder.Services.AddScoped<IClientTripRepository, ClientTripRepository>();
 
         // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
