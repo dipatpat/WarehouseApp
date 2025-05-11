@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using Warehouse.DTOs;
 using Warehouse.Services;
 
 namespace Warehouse.Controllers;
@@ -8,11 +9,13 @@ namespace Warehouse.Controllers;
 [ApiController]
 public class ProductController : Controller
 {
-    private readonly IProductService _productService;   
+    private readonly IProductService _productService;  
+    private readonly IWarehouseService _warehouseService;
 
-    public ProductController(IProductService productService)
+    public ProductController(IProductService productService, IWarehouseService warehouseService)
     {
         _productService = productService;
+        _warehouseService = warehouseService;
     }
     
     [HttpGet("{id}")]
@@ -21,4 +24,6 @@ public class ProductController : Controller
         var item = await _productService.GetProductByIdAsync(id, cancellationToken);
         return Ok(item);
     }
+    
+    
 }

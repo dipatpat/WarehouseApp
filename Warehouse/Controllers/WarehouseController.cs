@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Warehouse.DTOs;
 using Warehouse.Services;
 
 namespace Warehouse.Controllers;
@@ -19,6 +20,13 @@ public class WarehouseController : ControllerBase
     {
         var item = await _warehouseService.GetWarehouseByIdAsync(id, cancellationToken);
         return Ok(item);
+    }
+    
+    [HttpPost]
+    public async Task<IActionResult> CreatePurchaseAsync(PurchaseRequestDto request, CancellationToken cancellationToken)
+    {
+        var transactionId = await _warehouseService.CreatePurchaseAsync(request, cancellationToken);
+        return StatusCode(201, new { IdProductWarehouse = transactionId });
     }
     
 }

@@ -1,5 +1,6 @@
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerUI;
+using Warehouse.Middlewares;
 using Warehouse.Repositories;
 using Warehouse.Services;
 
@@ -18,7 +19,7 @@ public class Program
         builder.Services.AddScoped<IProductRepository, ProductRepository>();
         builder.Services.AddScoped<IWarehouseService, WarehouseService>();
         builder.Services.AddScoped<IWarehouseRepository, WarehouseRepository>();
-        //builder.Services.AddScoped<IClientTripRepository, ClientTripRepository>();
+        builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 
         // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
         builder.Services.AddOpenApi();
@@ -51,7 +52,7 @@ public class Program
             app.MapOpenApi();
         }
 
-        //app.UseGlobalExceptionHandling(); //registering my custom middleware
+        app.UseGlobalExceptionHandling(); 
 
         app.UseSwagger();
 

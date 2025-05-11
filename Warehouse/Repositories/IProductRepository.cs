@@ -1,3 +1,4 @@
+using Warehouse.DTOs;
 using Warehouse.Models;
 
 namespace Warehouse.Repositories;
