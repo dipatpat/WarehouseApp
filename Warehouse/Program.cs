@@ -15,8 +15,6 @@ public class Program
         // Add services to the container.
         builder.Services.AddAuthorization();
         builder.Services.AddControllers();
-        builder.Services.AddScoped<IProductService, ProductService>(); //register dependency
-        builder.Services.AddScoped<IProductRepository, ProductRepository>();
         builder.Services.AddScoped<IWarehouseService, WarehouseService>();
         builder.Services.AddScoped<IWarehouseRepository, WarehouseRepository>();
         builder.Services.AddScoped<IOrderRepository, OrderRepository>();

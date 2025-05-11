@@ -9,13 +9,11 @@ using Warehouse.Models;
 public class WarehouseService : IWarehouseService
 {
     private readonly IWarehouseRepository _warehouseRepository;
-    private readonly IProductRepository _productRepository;
     private readonly IOrderRepository _orderRepository;
 
-    public WarehouseService(IWarehouseRepository warehouseRepository, IProductRepository productRepository)
+    public WarehouseService(IWarehouseRepository warehouseRepository)
     {
         _warehouseRepository = warehouseRepository;
-        _productRepository = productRepository;
     }
 
     public async Task<Warehouse?> GetWarehouseByIdAsync(int id, CancellationToken cancellationToken)

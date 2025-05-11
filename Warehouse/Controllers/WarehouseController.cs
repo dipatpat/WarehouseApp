@@ -14,14 +14,8 @@ public class WarehouseController : ControllerBase
     {
             _warehouseService = warehouseService;
     }
-    
-    [HttpGet("{id}")]
-    public async Task<IActionResult> GetWarehouseByIdAsync(int id, CancellationToken cancellationToken)
-    {
-        var item = await _warehouseService.GetWarehouseByIdAsync(id, cancellationToken);
-        return Ok(item);
-    }
-    
+
+
     [HttpPost]
     public async Task<IActionResult> CreatePurchaseAsync(PurchaseRequestDto request, CancellationToken cancellationToken)
     {

@@ -5,7 +5,6 @@ using Warehouse.Models;
 
 public interface IWarehouseService
 {
-    public Task<Warehouse?> GetWarehouseByIdAsync(int id, CancellationToken cancellationToken);
     public Task<int?> CreatePurchaseAsync(PurchaseRequestDto request, CancellationToken cancellationToken);
     public Task<int?> CreatePurchaseByProcAsync(PurchaseRequestDto request, CancellationToken cancellationToken);
 }

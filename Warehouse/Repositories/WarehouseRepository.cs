@@ -2,21 +2,16 @@ using System.Data;
 using Microsoft.Data.SqlClient;
 using Warehouse.DTOs;
 using Warehouse.Exceptions;
-using Warehouse.Models;
 
 namespace Warehouse.Repositories;
 
 public class WarehouseRepository : IWarehouseRepository
 {
     public readonly string _connectionString;
-    private readonly IProductRepository _productRepository;
-    private readonly IOrderRepository _orderRepository;
 
-    public WarehouseRepository(IConfiguration configuration, IProductRepository productRepository, IOrderRepository orderRepository)
+    public WarehouseRepository(IConfiguration configuration)
     {
         _connectionString = configuration.GetConnectionString("DefaultConnection");
-        _productRepository = productRepository;
-        _orderRepository = orderRepository;
     }
     public async Task<Models.Warehouse?> GetWarehouseByIdAsync(int id, CancellationToken cancellationToken)
     {
