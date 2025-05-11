@@ -1,8 +1,8 @@
 using Warehouse.Models;
 
-namespace Warehouse.Services;
+namespace Warehouse.Repositories;
 
-public interface IProductService
+public interface IProductRepository
 {
     public Task<Product?> GetProductByIdAsync(int id, CancellationToken cancellationToken);
 }

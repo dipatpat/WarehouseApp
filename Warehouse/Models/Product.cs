@@ -4,7 +4,7 @@ namespace Warehouse.Models;
 
 public class Product
 {
-    public int idProduct { get; set; }
+    public int IdProduct { get; set; }
     
     [MaxLength(200)]
     public string Name { get; set; }

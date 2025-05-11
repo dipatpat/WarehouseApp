@@ -1,5 +1,7 @@
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerUI;
+using Warehouse.Repositories;
+using Warehouse.Services;
 
 namespace Warehouse;
 
@@ -12,8 +14,8 @@ public class Program
         // Add services to the container.
         builder.Services.AddAuthorization();
         builder.Services.AddControllers();
-        //builder.Services.AddScoped<ITripsService, TripsService>(); //register dependency
-        //builder.Services.AddScoped<ITripsRepository, TripsRepository>();
+        builder.Services.AddScoped<IProductService, ProductService>(); //register dependency
+        builder.Services.AddScoped<IProductRepository, ProductRepository>();
         //builder.Services.AddScoped<IClientService, ClientService>();
         //builder.Services.AddScoped<IClientRepository, ClientRepository>();
         //builder.Services.AddScoped<IClientTripRepository, ClientTripRepository>();

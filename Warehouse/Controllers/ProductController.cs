@@ -14,9 +14,9 @@ public class ProductController : Controller
     }
     
     [HttpGet("{id}")]
-    public async Task<IActionResult> GetByIdAsync(int id, CancellationToken cancellationToken)
+    public async Task<IActionResult> GetProductByIdAsync(int id, CancellationToken cancellationToken)
     {
-        //var item = await _productService.GetByIdAsync(id, cancellationToken);
-        return Ok();
+        var item = await _productService.GetProductByIdAsync(id, cancellationToken);
+        return Ok(item);
     }
 }
