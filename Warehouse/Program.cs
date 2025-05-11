@@ -44,7 +44,6 @@ public class Program
 
         var app = builder.Build();
 
-        // Configure the HTTP request pipeline.
         if (app.Environment.IsDevelopment())
         {
             app.MapOpenApi();
@@ -54,16 +53,14 @@ public class Program
 
         app.UseSwagger();
 
-        //Enable middleware to serve swagger-ui
         app.UseSwaggerUI(c =>
         {
-            c.SwaggerEndpoint("/swagger/v1/swagger.json", "Travel Agency API v1");
+            c.SwaggerEndpoint("/swagger/v1/swagger.json", "Warehouse API v1");
 
-            //Basic UI Customization
             c.DocExpansion(DocExpansion.List);
-            c.DefaultModelsExpandDepth(0); //Hide schemas section by default
-            c.DisplayRequestDuration(); //Show request duration
-            c.EnableFilter(); //Enable filtering operration
+            c.DefaultModelsExpandDepth(0); 
+            c.DisplayRequestDuration();
+            c.EnableFilter(); 
         });
 
         app.UseHttpsRedirection();
